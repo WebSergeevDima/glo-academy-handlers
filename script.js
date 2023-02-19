@@ -6,16 +6,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const text = document.getElementById('text');
     const eBtn = document.getElementById('e_btn');
     const range = document.getElementById('range');
+    const rangeText = document.getElementById('range-span');
     const circle = document.getElementById('circle');
+
+    function setValueOfCircle() {
+        rangeText.innerHTML = range.value + '%';
+        circle.style.cssText = `width: ${range.value}%; height: ${range.value}%;`;
+    }
+
+    setValueOfCircle();
+    eBtn.style.display = 'none';
 
     btn.addEventListener('click', function () {
         square.style.backgroundColor = text.value;
     });
 
-    range.addEventListener('input', function (e) {
-        circle.style.cssText = `width: ${e.target.value}%; height: ${e.target.value}%;`;
-    });
-
-    eBtn.style.display = 'none';
+    range.addEventListener('input', setValueOfCircle);
 
 });
